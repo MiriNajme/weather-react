@@ -1,0 +1,23 @@
+.forecast-row {
+  color: black;
+}
+.forecast-details {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background: rgb(245 245 245 / 32%);
+  box-shadow: 0 0 3px 0px #9e9e9e8a;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 5px 0px;
+}
+.weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.weather-forecast-temperature {
+  font-size: 13px;
+}
+.weather-forecast-temp-min {
+  opacity: 0.5;
+}

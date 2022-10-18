@@ -1,0 +1,35 @@
+.current-location-btn {
+  transition: all 20ms ease-in-out;
+  box-shadow: 2px 2px 5px #767373 !important;
+}
+.current-location-btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  color: #ec6e4c;
+  background-color: #454a4f;
+}
+.form-control {
+  padding-left: 10px;
+}
+.form-control:focus {
+  box-shadow: 1px 1px 5px #ec6e4c;
+  border-color: #ec6e4c;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .current-location-btn {
+    font-size: 12px;
+    height: 40px;
+  }
+  .city-name {
+    font-size: 34px;
+  }
+}
+@media (max-width: 990px) {
+  .input-text {
+    width: 100%;
+  }
+  .current-location-btn {
+    display: none;
+  }
+}

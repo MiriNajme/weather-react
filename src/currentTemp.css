@@ -1,0 +1,83 @@
+.weather-icon {
+  padding-left: 0px;
+}
+
+.weather-icon li {
+  list-style: none;
+  font-size: 14px;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+.weather-icon li::first-letter {
+  text-transform: uppercase;
+}
+.weather-icon ul {
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+.city {
+  padding-left: 15px;
+}
+.city h1 {
+  margin-bottom: 2px;
+  font-weight: 300;
+}
+.city ul {
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+.city li {
+  text-align: left;
+  list-style: none;
+}
+.city li:first-child {
+  position: relative;
+}
+.degree-units {
+  position: absolute;
+  top: 4px;
+}
+.city-name {
+  text-transform: capitalize;
+  margin-top: 0px;
+}
+.current-degree {
+  width: auto;
+  text-align: left;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 300;
+}
+.weather-description {
+  padding: 5px 0px;
+}
+.weather-icon {
+  margin-left: -10px;
+}
+.celsius,
+.fahrenheit {
+  text-decoration: none;
+}
+.clicked {
+  color: black;
+  cursor: default;
+}
+.celsius:focus,
+.celsius:active,
+.fahrenheit:focus,
+.fahrenheit:active {
+  text-decoration: none;
+  color: black;
+}
+.clicked:hover {
+  color: black;
+}
+@media (max-width: 768px) {
+  .city li {
+    text-align: center !important;
+  }
+  .weather-icon {
+    margin-top: 10px;
+  }
+}
