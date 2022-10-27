@@ -12,7 +12,7 @@
   padding-left: 10px;
 }
 .form-control:focus {
-  box-shadow: 1px 1px 5px #ec6e4c;
+  box-shadow: 1px 1px 2px #ec6e4c;
   border-color: #ec6e4c;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
