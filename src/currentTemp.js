@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import HighLowTemp from "./highLowTemp";
 import "./currentTemp.css";
+import WeatherTemp from "./weatherTemp";
 // import { weatherData } from "./fakeData.js";
 
 import FormattedDate from "./fomattedDate";
@@ -11,16 +12,7 @@ export default function CurrentTemp(props) {
       <div className="col-md-4 city ps-0">
         <ul>
           <li>
-            <span className="current-degree">{props.data.temperature}</span>
-            <small className="degree-units">
-              <a href="/" className="clicked celsius">
-                °C{" "}
-              </a>
-              |
-              <a href="/" className="fahrenheit">
-                °F
-              </a>
-            </small>
+            <WeatherTemp celsius={props.data.temperature} />
           </li>
           <li>
             <h1 className="city-name">{props.data.city}</h1>

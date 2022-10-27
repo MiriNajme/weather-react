@@ -4,7 +4,6 @@ import axios from "axios";
 import "./weather.css";
 
 export default function Weather() {
-  const [temp, setTemp] = useState(null);
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("");
   function showTemp(response) {

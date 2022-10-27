@@ -59,10 +59,10 @@
 .fahrenheit {
   text-decoration: none;
 }
-.clicked {
+/* .clicked {
   color: black;
   cursor: default;
-}
+} */
 .celsius:focus,
 .celsius:active,
 .fahrenheit:focus,
