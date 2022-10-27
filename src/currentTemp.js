@@ -37,7 +37,10 @@ export default function CurrentTemp(props) {
         </ul>
       </div>
       <div className="col-md-4 high-low-temp">
-        <HighLowTemp />
+        <HighLowTemp
+          highTemp={props.data.highTemp}
+          lowTemp={props.data.lowTemp}
+        />
       </div>
     </div>
   );
