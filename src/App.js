@@ -1,4 +1,5 @@
 import Layout from "./layout.js";
+import Footer from "./footer";
 import "./App.css";
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
       <div className="container">
         <Layout />
       </div>
+      <Footer />
     </div>
   );
 }

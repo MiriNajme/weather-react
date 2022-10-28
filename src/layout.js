@@ -1,6 +1,5 @@
 import React from "react";
 import Weather from "./weather.js";
-import Footer from "./footer.js";
 import "./layout.css";
 import ForecastContainer from "./forecastContainer.js";
 
@@ -13,7 +12,6 @@ export default function Layout() {
           <ForecastContainer />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
