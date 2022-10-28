@@ -67,11 +67,13 @@ export default function Weather() {
 
   useEffect(() => {
     getCurrentPosition();
+    // eslint-disable-next-line
   }, []);
 
   function getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(retrievePosition);
   }
+
   return (
     <div className="weather">
       <form onSubmit={handleSubmit}>
