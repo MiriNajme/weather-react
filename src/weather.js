@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CurrentTemp from "./currentTemp";
 import axios from "axios";
 import "./weather.css";
@@ -7,7 +7,7 @@ export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("");
   function showTemp(response) {
-    console.log(response);
+    // console.log(response);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
@@ -44,7 +44,34 @@ export default function Weather() {
     }
   }
 
-  // if (weatherData.ready) {
+  function getCity(response) {
+    // console.log(response);
+    setWeatherData((prevState) => ({
+      ...prevState,
+      city: response.data[0].name,
+    }));
+  }
+
+  async function retrievePosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiKey = "8b5dee79ecf0c909b3e67b3b6230efa2";
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    let reverseUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&APPID=${apiKey}`;
+
+    const response = await axios.get(url);
+    delete response.data.name;
+    showTemp(response);
+    axios.get(reverseUrl).then(getCity);
+  }
+
+  useEffect(() => {
+    getCurrentPosition();
+  }, []);
+
+  function getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(retrievePosition);
+  }
   return (
     <div className="weather">
       <form onSubmit={handleSubmit}>
@@ -72,6 +99,7 @@ export default function Weather() {
             <button
               type="button"
               className="btn btn-secondary current-location-btn"
+              onClick={getCurrentPosition}
             >
               Current Location
             </button>
@@ -79,13 +107,6 @@ export default function Weather() {
         </div>
       </form>
       {renderElement()}
-      {/* <CurrentTemp data={weatherData} /> */}
     </div>
   );
-  // } else {
-  //   const apiKey = "8b5dee79ecf0c909b3e67b3b6230efa2";
-  //   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
-  //   axios.get(apiUrl).then(showTemp);
-  //   return "Loading...";
-  // }
 }

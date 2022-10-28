@@ -18,7 +18,7 @@ export default function CurrentTemp(props) {
             <h1 className="city-name">{props.data.city}</h1>
           </li>
           <li className="text-muted current-time">
-            <FormattedDate date={props.data.date} />
+            Last Update : <FormattedDate date={props.data.date} />
           </li>
         </ul>
       </div>
