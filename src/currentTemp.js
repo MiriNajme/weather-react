@@ -2,8 +2,6 @@ import React from "react";
 import HighLowTemp from "./highLowTemp";
 import "./currentTemp.css";
 import WeatherTemp from "./weatherTemp";
-// import { weatherData } from "./fakeData.js";
-
 import FormattedDate from "./fomattedDate";
 
 export default function CurrentTemp(props) {

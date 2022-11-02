@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import CurrentTemp from "./currentTemp";
+import ForecastContainer from "./forecastContainer";
 import axios from "axios";
 import "./weather.css";
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("");
+
   function showTemp(response) {
-    // console.log(response);
     setWeatherData({
-      ready: true,
+      coord: response.data.coord,
       temperature: Math.round(response.data.main.temp),
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
@@ -18,6 +19,7 @@ export default function Weather() {
       description: response.data.weather[0].description,
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
       date: new Date(response.data.dt * 1000),
+      ready: true,
     });
   }
 
@@ -33,19 +35,24 @@ export default function Weather() {
   function fetchTemp() {
     const apiKey = "8b5dee79ecf0c909b3e67b3b6230efa2";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
+    console.log("API CALL");
     axios.get(apiUrl).then(showTemp);
   }
 
   function renderElement() {
     if (weatherData.ready) {
-      return <CurrentTemp data={weatherData} />;
+      return (
+        <>
+          <CurrentTemp data={weatherData} />
+          <ForecastContainer coord={weatherData.coord} />
+        </>
+      );
     } else {
       return <div>Loading...</div>;
     }
   }
 
   function getCity(response) {
-    // console.log(response);
     setWeatherData((prevState) => ({
       ...prevState,
       city: response.data[0].name,
@@ -53,12 +60,12 @@ export default function Weather() {
   }
 
   async function retrievePosition(position) {
+    console.log("REVERSE CALL");
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let apiKey = "8b5dee79ecf0c909b3e67b3b6230efa2";
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
     let reverseUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&APPID=${apiKey}`;
-
     const response = await axios.get(url);
     delete response.data.name;
     showTemp(response);
@@ -66,6 +73,7 @@ export default function Weather() {
   }
 
   useEffect(() => {
+    console.log("EFFECT CALL");
     getCurrentPosition();
     // eslint-disable-next-line
   }, []);

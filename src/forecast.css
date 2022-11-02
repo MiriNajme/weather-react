@@ -20,4 +20,5 @@
 }
 .weather-forecast-temp-min {
   opacity: 0.5;
+  padding-right: 5px;
 }
